@@ -40,6 +40,15 @@ console.log(snapshot.val());
     var tArrival; 
     var tMinutes;
 
+    if (maxMoment === trainTime) {
+        tArrival = trainTime.format("hh:mm A");
+        tMinutes = trainTime.diff(moment(), "minutes")
+    } else {
+        var differenceTimes = moment().diff(trainTime, "minutes");
+        var tReminder = differenceTimes % tFrequency;
+        tMinutes = tFrequency - tReminder;
+        tArrival = moment().add(tMinutes, "m").format("hh:mm A");
+    }
 
 
     $("#train-table > tbody").append("<tr><td>" + tName + "</td><td>" + tDestination + "</td><td>" +

@@ -1,3 +1,5 @@
+
+// Allows for access firebase database
 var config = {
     apiKey: "AIzaSyAS25ARcoW0v--WGXBYSsGoCgUsSZhyFXU",
     authDomain: "train-8d044.firebaseapp.com",
@@ -8,7 +10,7 @@ var config = {
 };
 firebase.initializeApp(config);
 var database = firebase.database();
-
+// Takes the values and moves into the database as well as to the page also pulls data from the database to the page
 $("#add-train-btn").on("click", function(event) {
     event.preventDefault();
     var trainName = $("#train-name-input").val().trim();
@@ -50,7 +52,7 @@ console.log(snapshot.val());
         tArrival = moment().add(tMinutes, "m").format("hh:mm A");
     }
 
-
+    // For the database as well as the inputted data
     $("#train-table > tbody").append("<tr><td>" + tName + "</td><td>" + tDestination + "</td><td>" +
         tFrequency + "</td><td>" + tArrival + "</td><td>" + tMinutes + "</td></tr>");
 
